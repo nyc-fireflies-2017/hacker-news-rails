@@ -17,25 +17,25 @@ ActiveRecord::Schema.define(version: 20170306202941) do
 
   create_table "comments", force: :cascade do |t|
     t.string   "body",       null: false
-    t.integer  "posts_id",   null: false
-    t.integer  "users_id"
+    t.integer  "post_id",    null: false
+    t.integer  "user_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["posts_id"], name: "index_comments_on_posts_id", using: :btree
-    t.index ["users_id"], name: "index_comments_on_users_id", using: :btree
+    t.index ["post_id"], name: "index_comments_on_post_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
   create_table "posts", force: :cascade do |t|
     t.string   "title",      null: false
-    t.integer  "users_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["users_id"], name: "index_posts_on_users_id", using: :btree
+    t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username"
-    t.string   "email"
+    t.string   "username",        null: false
+    t.string   "email",           null: false
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
